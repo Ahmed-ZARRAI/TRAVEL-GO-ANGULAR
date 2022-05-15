@@ -1,0 +1,84 @@
+<div id="app">
+  <div class="header-area header-sticky">
+
+
+
+    <div style="width: 100%; text-align: center; display: flex;padding-left:  15%; padding-right: 25%;padding-top:10px; text-decoration: none !important; color: rgb(12, 12, 12) ; " >
+      <nav class="main-nav">
+
+        <!--<a href="index.html" class="logo" >
+          <img src="assets/images/templatemo-eduwell.png" alt="EduWell Template">
+      </a>-->
+      <ul class=" nav " routerLinkActive="active">
+        <li class="scroll-to-section">
+          <a href="/home" class="nav-link" style="color: rgb(255, 255, 255) ; " routerLink="home">Home </a>
+          
+        </li>
+        <li class="scroll-to-section"><a href="#contact-section " style="color: rgb(255, 254, 254)">Contact Us</a></li> 
+        <li class="scroll-to-section"><a href="#courses"  style="color: rgb(255, 255, 255)">Programme</a></li>
+
+          <li class="scroll-to-section"  *ngIf="!isLoggedIn">
+          <a href="/register" class="nav-link" style="color: rgb(255, 255, 255) ; " routerLink="register">Sign Up</a>
+        </li>
+        <li class="scroll-to-section" *ngIf="!isLoggedIn">
+          <a href="/login" class="nav-link" style="color: rgb(255, 255, 255) ; " routerLink="login">Login</a>
+        </li>
+        <li class="scroll-to-section" *ngIf="showAdminBoard">
+          <a href="/admin" class="nav-link" style="color: rgb(255, 255, 255) ; " routerLink="admin">Admin Board</a>
+        </li>
+        <li class="scroll-to-section" *ngIf="showAdminBoard">
+          <a href="/admin" class="nav-link" style="color: rgb(255, 255, 255) ; " routerLink="stat"> DACHBOARD</a>
+        </li>
+        <li class="scroll-to-section" *ngIf="showModeratorBoard">
+          <a href="/mod" class="nav-link" style="color: rgb(255, 255, 255) ; " routerLink="mod">Company Board</a>
+        </li>
+        <li >
+          <a href="/user" class="nav-link" style="color: rgb(255, 255, 255) ; " *ngIf="isLoggedIn" routerLink="user">Operation</a>
+        </li>
+
+        <li class="scroll-to-section"  *ngIf="isLoggedIn">
+          <a href="/profile" class="nav-link" style="color: rgb(255, 255, 255) ; " routerLink="profile">{{ username }}</a>
+        </li>
+
+        <li class="scroll-to-section"  *ngIf="isLoggedIn">
+          <a href class="nav-link" style="color: rgb(255, 255, 255) ; " (click)="logout()">LogOut</a>
+        </li>
+      
+        <li class="scroll-to-section"  *ngIf="!isLoggedIn">
+          <a href="/fp" class="nav-link" style="color: rgb(255, 255, 255) ; "  routerLink="fp">Forget password</a>
+        </li>
+      </ul>
+       
+    </nav>
+
+   
+  <!-- <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">bezKoder</a>
+  
+
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">LogOut</a>
+      </li>
+    </ul>
+  </nav> -->
+  </div>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+  <div>
+</div>
+
+

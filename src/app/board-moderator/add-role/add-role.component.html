@@ -1,0 +1,89 @@
+
+<div class="col-md-12" style="margin-top: 165px;">
+   
+  
+      <form
+        *ngIf="!isSuccessful"
+        name="forme"
+        (ngSubmit)="f.form.valid && onSubmitt()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="name">Role name</label>
+          <input
+          placeholder="Role name"
+            type="text"
+            class="form-control"
+            name="name"
+            [(ngModel)]="forme.name"
+            required
+            minlength="3"
+            maxlength="20"
+            #name="ngModel"
+          />
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">add </button>
+        </div>
+      </form>
+      <div class="alert alert-success" *ngIf="isSuccessfull">
+        Your roleadd is successful!
+      </div>
+ 
+  </div>
+
+
+  <div class="col-md-12" style="margin-top: 165px;">
+  
+      
+      <form
+        *ngIf="!isSuccessful"
+        name="formee"
+        (ngSubmit)="f.form.valid && onSubmittt()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+          placeholder="Username"
+            type="text"
+            class="form-control"
+            name="username"
+            [(ngModel)]="formee.username"
+            required
+            minlength="3"
+            maxlength="20"
+            #username="ngModel"
+          />
+    
+        </div>
+        <div class="form-group">
+          <label for="role">Rolename</label>
+          <input
+          placeholder="Rolename"
+            type="text"
+            class="form-control"
+            name="role"
+            [(ngModel)]="formee.name"
+            required
+            role
+            #role="ngModel"
+          />
+      
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">add</button>
+        </div>
+    
+      </form>
+    
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Your affect is successful!
+      </div>
+ 
+    </div>
+     
+  
+

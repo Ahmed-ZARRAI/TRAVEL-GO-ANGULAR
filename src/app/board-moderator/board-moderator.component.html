@@ -1,0 +1,383 @@
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+     
+        <a class="navbar-brand" style="color:white;">LIST Employee</a>
+        <b></b>>
+       
+        <a class="navbar-brand" href="/add-role" style="color:white;"  routerLink="add-role">add role</a> 
+        <b></b>
+     
+        <a class="navbar-brand" href="/add" style="color:white;"  routerLink="add">REFRECHE</a> 
+        <b></b>
+        <b></b>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+           <ul class="navbar-nav mr-auto">
+             <li class="nav-item active">
+        </li>
+           </ul>
+           <form class="form-inline my-2 my-lg-0">
+            <input type="search" (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel
+             name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search employees..." required>
+         </form>
+        </div>
+      </nav>
+     <div class="container" id="main-container">
+      <div class="row">
+        <div *ngFor="let employee of employees | paginate: { itemsPerPage: 3, currentPage: page, totalItems: totalLenth}"  class="col-md-6 col-xl-3">
+           <div class="card m-b-30">
+              <div class="card-body row">
+                 <div class="col-6">
+                    <a href=""><img src="{{employee?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
+                 </div>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><i class="fa fa-envelope float-right"></i>{{employee?.email}}</li>
+                <li class="list-group-item"><i class="fa fa-phone float-right"></i>USERNAME : {{employee?.username}}</li>
+               <li class="list-group-item"><i class="fa fa-phone float-right"></i>PHONE : {{employee?.phoneNumberUser}}</li>
+                 <li class="list-group-item"><i class="fa fa-phone float-right"></i>ADRESS : {{employee?.adressUser}}</li>
+                 <li class="list-group-item"><i class="fa fa-phone float-right"></i>COMPANYNAME : {{employee?.companyName}}</li>
+               
+               <!--<li class="list-group-item"><i class="fa fa-phone float-right"></i>role : {{employee?.roles}}</li>--> 
+               <li class="list-group-item"><i class="fa fa-phone float-right"></i>SEXE : {{employee?.sexeUser}}</li>
+              </ul>
+              <div class="card-body">
+            
+             </div>
+         
+           </div>
+        </div>
+        <pagination-controls  class="text-centre my-pagination" (pageChange)="page = $event"></pagination-controls>
+      </div>
+ 
+
+    
+        <div class="container h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+              <div class="card text-black" style="border-radius: 25px;">
+                <div class="card-body p-md-5">
+                  <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+           <form
+             *ngIf="!isSuccessful"
+             name="form"
+             (ngSubmit)="f.form.valid && onSubmit()"
+             #f="ngForm"
+             novalidate
+           >
+             <div class="form-group">
+               <label for="username">Username</label>
+               <input
+               placeholder="Username"
+                 type="text"
+                 class="form-control"
+                 name="username"
+                 [(ngModel)]="form.username"
+                 required
+                 minlength="3"
+                 maxlength="20"
+                 #username="ngModel"
+               />
+               <div class="alert-danger" *ngIf="username.errors && f.submitted">
+                 <div *ngIf="username.errors.required">Username is required</div>
+                 <div *ngIf="username.errors.minlength">
+                   Username must be at least 3 characters
+                 </div>
+                 <div *ngIf="username.errors.maxlength">
+                   Username must be at most 20 characters
+                 </div>
+               </div>
+             </div>
+             <div class="form-group">
+               <label for="email">Email</label>
+               <input
+               placeholder="Email"
+                 type="email"
+                 class="form-control"
+                 name="email"
+                 [(ngModel)]="form.email"
+                 required
+                 email
+                 #email="ngModel"
+               />
+               <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                 <div *ngIf="email.errors.required">Email is required</div>
+                 <div *ngIf="email.errors.email">
+                   Email must be a valid email address
+                 </div>
+               </div>
+             </div>
+             <div class="form-group">
+               <label for="password">Password</label>
+               <input
+               placeholder="Password"
+                 type="password"
+                 class="form-control"
+                 name="password"
+                 [(ngModel)]="form.password"
+                 required
+                 minlength="6"
+                 #password="ngModel"
+               />
+               <div class="alert-danger" *ngIf="password.errors && f.submitted">
+                 <div *ngIf="password.errors.required">Password is required</div>
+                 <div *ngIf="password.errors.minlength">
+                   Password must be at least 6 characters
+                 </div>
+               </div>
+             </div>
+
+             <div class="form-group">
+              <label for="sexeUser">sexe</label>
+              <input
+              placeholder="sexe"
+                type="text"
+                class="form-control"
+                name="sexeUser"
+                [(ngModel)]="form.sexeUser"
+                required
+                minlength="3"
+                maxlength="2000"
+                #localisationCompany="ngModel"
+              />
+              <div class="alert-danger" *ngIf="f.submitted">
+              
+           
+            
+              </div>
+            </div>
+      
+       
+         
+       
+             <div class="form-group">
+               <button class="btn btn-primary btn-block">Sign Up</button>
+             </div>
+       
+             <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+               Signup failed!<br />{{ errorMessage }}
+             </div>
+           </form>
+       
+           <div class="alert alert-success" *ngIf="isSuccessful">
+             Your registration is successful!
+           </div>
+         </div>
+       </div>
+    </div>
+
+
+
+
+
+ <!--
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" style="color:white;">ADD ROLE </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor02">
+         <ul class="navbar-nav mr-auto">
+           <li class="nav-item active">
+      </li>
+         </ul>
+ 
+      </div>
+    </nav>
+
+
+     <div class="col-md-12" style="margin-top: 165px;">
+       <div class="card card-container">
+     
+         <form
+           *ngIf="!isSuccessful"
+           name="forme"
+           (ngSubmit)="f.form.valid && onSubmitt()"
+           #f="ngForm"
+           novalidate
+         >
+           <div class="form-group">
+             <label for="name">Role name</label>
+             <input
+               type="text"
+               class="form-control"
+               name="name"
+               [(ngModel)]="forme.name"
+               required
+               minlength="3"
+               maxlength="20"
+               #name="ngModel"
+             />
+           </div>
+           <div class="form-group">
+             <button class="btn btn-primary btn-block">add </button>
+           </div>
+         </form>
+         <div class="alert alert-success" *ngIf="isSuccessful">
+           Your roleadd is successful!
+         </div>
+       </div>
+     </div>
+     
+
+
+
+
+
+
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" style="color:white;">AFFECT ROLE TO USER  </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor02">
+         <ul class="navbar-nav mr-auto">
+           <li class="nav-item active">
+      </li>
+         </ul>
+ 
+      </div>
+    </nav>
+
+
+
+
+<div class="col-md-12" style="margin-top: 165px;">
+<div class="card card-container">
+  
+  <form
+    *ngIf="!isSuccessful"
+    name="formee"
+    (ngSubmit)="f.form.valid && onSubmittt()"
+    #f="ngForm"
+    novalidate
+  >
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        [(ngModel)]="formee.username"
+        required
+        minlength="3"
+        maxlength="20"
+        #username="ngModel"
+      />
+
+    </div>
+    <div class="form-group">
+      <label for="role">Rolename</label>
+      <input
+        type="text"
+        class="form-control"
+        name="role"
+        [(ngModel)]="formee.name"
+        required
+        role
+        #role="ngModel"
+      />
+  
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary btn-block">add</button>
+    </div>
+
+  </form>
+
+  <div class="alert alert-success" *ngIf="isSuccessful">
+    Your affect is successful!
+  </div>
+</div>
+</div>
+ 
+-->
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" style="color:white;">Contact admin  </a>
+</nav>
+
+<div class="col-md-12" style="margin-top: 165px;">
+<div class="card card-container">
+
+<form
+*ngIf="!isSuccessful"
+name="formeee"
+(ngSubmit)="f.form.valid && onSubmitttt()"
+#f="ngForm"
+novalidate
+>
+
+
+<div class="form-group">
+  <label for="message">message</label>
+  <input
+  placeholder="message"
+    type="text"
+    class="form-control"
+    name="message"
+    [(ngModel)]="formeee.message"
+    required
+    role
+    #role="ngModel"
+  />
+
+</div>
+<div class="form-group">
+  <button class="btn btn-primary btn-block">add</button>
+</div>
+
+</form>
+
+<div class="alert alert-success" *ngIf="isSuccessfull">
+Your affect is successful!
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Notification for no employees -->
+<div *ngIf="employees?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">NO EMPLOYEES!</h4>
+    <p>No Employees were found.</p>
+  </div>
+  </div>
+
+<router-outlet></router-outlet>
+
+
+
+
+
+

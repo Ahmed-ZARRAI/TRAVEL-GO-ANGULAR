@@ -1,0 +1,249 @@
+
+ <!-- Update Profile-->
+    
+
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" style="color:white;">UPDATE PROFILE </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarColor02">
+     <ul class="navbar-nav mr-auto">
+       <li class="nav-item active">
+  </li>
+     </ul>
+
+  </div>
+</nav>
+<section class="vh-100" style="background-color: #eee;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+ <div class="rightbox" *ngIf="empolyee">
+
+
+  <label><b>username</b></label>
+  <div class="form-group">
+    <input     placeholder="username" type="text" class="form-control" [(ngModel)]="empolyee.username" />
+  </div>
+
+  <label><b>email</b></label>
+  <div class="form-group">
+    <input     placeholder="email" type="text" class="form-control" [(ngModel)]="empolyee.email" />
+  </div>
+
+  <label><b>companyName</b></label>
+  <div class="form-group">
+    <input     placeholder="companyName" type="text" class="form-control" [(ngModel)]="empolyee.companyName" required #companyName="ngModel" />
+  </div>
+  </div>
+
+
+  <label><b>Tel</b></label>
+  <div class="form-group">
+    <input     placeholder="Tel" type="text" class="form-control" [(ngModel)]="empolyee.phoneNumberUser" />
+  </div>
+
+
+  <label><b>Pays</b></label>
+  <div class="form-group">
+    <input     placeholder="Pays" type="text" class="form-control" [(ngModel)]="empolyee.adressUser" />
+  </div>
+
+  <label><b>localisationCompany</b></label>
+  <div class="form-group">
+    <input     placeholder="localisationCompany" type="text" class="form-control" [(ngModel)]="empolyee.localisationCompany" />
+  </div>
+
+  <button class="btn btn-primary" type="submit" (click)="updateProfile(empolyee, id)"  >UPDATE</button>
+
+
+
+  <div class="alert alert-success" [hidden]="showmsg" >
+    {{ msg }}
+  </div>
+
+
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" style="color:white;">UPDATE Password </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+       <ul class="navbar-nav mr-auto">
+         <li class="nav-item active">
+    </li>
+       </ul>
+  
+    </div>
+  </nav>
+
+
+
+
+
+
+
+
+  <div class="col-md-12" style="margin-top: 165px;">
+    <div class="card card-container">
+      
+      <form
+        *ngIf="!isSuccessful"
+        name="formee"
+        (ngSubmit)="f.form.valid && onSubmittt()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="username"> your name please </label>
+          <input
+          placeholder="name"
+            type="text"
+            class="form-control"
+            name="username"
+            [(ngModel)]="formee.username"
+            required
+            minlength="3"
+            maxlength="20"
+            #username="ngModel"
+          />
+    
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">add</button>
+        </div>
+    
+      </form>
+    
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Your affect is successful!
+      </div>
+    </div>
+    </div>
+
+
+
+
+
+
+    <div class="col-md-12" style="margin-top: 165px;">
+      <div class="card card-container">
+        
+        <form
+          *ngIf="!isSuccessful"
+          name="formeee"
+          (ngSubmit)="f.form.valid && onSubmitttt()"
+          #f="ngForm"
+          novalidate
+        >
+          <div class="form-group">
+            <label for="neww">new</label>
+            <input
+            placeholder="new"
+              type="text"
+              class="form-control"
+              name="neww"
+              [(ngModel)]="formeee.neww"
+              required
+              minlength="3"
+              maxlength="20"
+              #username="ngModel"
+            />
+      
+          </div>
+
+
+          <div class="form-group">
+            <label for="confirm">confirm</label>
+            <input
+            placeholder="confirm"
+              type="text"
+              class="form-control"
+              name="confirm"
+              [(ngModel)]="formeee.confirm"
+              required
+              minlength="3"
+              maxlength="20"
+              #username="ngModel"
+            />
+      
+          </div>
+
+
+          <div class="form-group">
+            <label for="code">code</label>
+            <input
+            placeholder="code"
+              type="text"
+              class="form-control"
+              name="code"
+              [(ngModel)]="formeee.code"
+              required
+              minlength="3"
+              maxlength="200"
+              #username="ngModel"
+            />
+      
+          </div>
+
+
+          <div class="form-group">
+            <button class="btn btn-primary btn-block">add</button>
+          </div>
+      
+        </form>
+      
+        <div class="alert alert-success" *ngIf="isSuccessful">
+          Your affect is successful!
+        </div>
+      </div>
+      </div>
+  
+
+  <router-outlet></router-outlet>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
